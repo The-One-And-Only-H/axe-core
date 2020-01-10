@@ -83,11 +83,13 @@ jobs:
       - checkout
       - <<: *restore_dependency_cache_win
       - run: |
-          choco install selenium-ie-driver
+          choco install selenium-ie-driver --version 3.141.5
           set PATH=C:\tools\selenium;%PATH%
           echo %PATH%
-      - run: npx grunt testconfig fixture	
-      - run: npx grunt connect test-webdriver:ie	
+      - run: npx grunt testconfig	
+      - run: npx grunt fixture	
+      - run: npx grunt connect
+      - run: npx grunt test-webdriver:ie	
 
   # Run examples under `doc/examples`
   test_examples:
