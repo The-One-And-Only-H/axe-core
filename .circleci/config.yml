@@ -86,11 +86,8 @@ jobs:
           choco install selenium-ie-driver
           set PATH=C:\tools\selenium;%PATH%
           echo %PATH%
-      - run: |
-          npm run build
-          npx grunt prepare
-          npx grunt test-webdriver:ie
-          npm run test:examples
+      - run: npx grunt testconfig fixture	
+      - run: npx grunt connect test-webdriver:ie	
 
   # Run examples under `doc/examples`
   test_examples:
