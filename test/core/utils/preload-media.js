@@ -107,7 +107,8 @@ describe.only('axe.utils.preloadMedia', function() {
 		axe.utils
 			.preloadMedia({ treeRoot: axe._tree[0] })
 			.then(function(result) {
-				assert.equal(result.length, 2);
+				assert.isDefined(result, 'Result does not exist' + result);
+				assert.equal(result.length, 2, '');
 				assert.isTrue(result[0].readyState > 0);
 				assert.equal(Math.round(result[0].duration), 27);
 
