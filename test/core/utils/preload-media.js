@@ -1,6 +1,6 @@
 /* global Promise */
 
-describe('axe.utils.preloadMedia', function() {
+describe.only('axe.utils.preloadMedia', function() {
 	'use strict';
 
 	var origFn = axe.utils.preloadMedia;
@@ -50,33 +50,27 @@ describe('axe.utils.preloadMedia', function() {
 		}
 	);
 
-	(isIE11 ? it.skip : it)(
-		'returns empty array when <video> has no source',
-		function(done) {
-			fixtureSetup('<video id="target"><source src=""/></video>');
-			axe.utils.preloadMedia({ treeRoot: axe._tree[0] }).then(function(result) {
-				assert.equal(result.length, 0);
-				done();
-			});
-		}
-	);
+	it('returns empty array when <video> has no source', function(done) {
+		fixtureSetup('<video id="target"><source src=""/></video>');
+		axe.utils.preloadMedia({ treeRoot: axe._tree[0] }).then(function(result) {
+			assert.equal(result.length, 0);
+			done();
+		});
+	});
 
-	(isIE11 ? it.skip : it)(
-		'returns media node (audio) after their metadata has been preloaded',
-		function(done) {
-			fixtureSetup(
-				'<audio src="/test/assets/moon-speech.mp3" autoplay="true" controls></audio>'
-			);
+	it('returns media node (audio) after their metadata has been preloaded', function(done) {
+		fixtureSetup(
+			'<audio src="/test/assets/moon-speech.mp3" autoplay="true" controls></audio>'
+		);
 
-			axe.utils.preloadMedia({ treeRoot: axe._tree[0] }).then(function(result) {
-				assert.equal(result.length, 1);
-				assert.isTrue(result[0].readyState > 0);
-				assert.equal(Math.round(result[0].duration), 27);
+		axe.utils.preloadMedia({ treeRoot: axe._tree[0] }).then(function(result) {
+			assert.equal(result.length, 1);
+			assert.isTrue(result[0].readyState > 0);
+			assert.equal(Math.round(result[0].duration), 27);
 
-				done();
-			});
-		}
-	);
+			done();
+		});
+	});
 
 	(isIE11 ? it.skip : it)(
 		'returns media nodes (audio, video) after their metadata has been preloaded',
