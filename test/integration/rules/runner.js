@@ -120,7 +120,7 @@
 									 */
 									debug: true,
 									performanceTimer: false,
-									runOnly: { type: 'rule', values: [ruleId] }
+									runOnly: { type: 'rule', values: [ruleId], preload: true }
 								},
 								function(err, r) {
 									// assert that there are no errors - if error exists a stack trace is logged.

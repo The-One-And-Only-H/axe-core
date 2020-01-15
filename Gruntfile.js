@@ -34,11 +34,11 @@ module.exports = function(grunt) {
 	}
 
 	var webDriverTestBrowsers = [
-		'firefox',
-		'chrome',
-		'ie',
-		'chrome-mobile',
-		'safari'
+		// 'firefox',
+		// 'chrome',
+		'ie'
+		// 'chrome-mobile',
+		// 'safari'
 	];
 
 	process.env.NODE_NO_HTTP2 = 1; // to hide node warning - (node:18740) ExperimentalWarning: The http2 module is an experimental API.
@@ -375,7 +375,7 @@ module.exports = function(grunt) {
 	grunt.registerTask('test-fast', ['prepare', 'run:npm_run_testHeadless']);
 	grunt.registerTask('test', [
 		'prepare',
-		'run:npm_run_testHeadless',
+		// 'run:npm_run_testHeadless',
 		'parallel'
 	]);
 	grunt.registerTask('ci-build', ['prepare', 'parallel']);
