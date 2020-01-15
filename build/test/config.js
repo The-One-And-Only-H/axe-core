@@ -26,7 +26,7 @@ exports = module.exports = function(grunt, options) {
 					'http://' + host + ':<%= connect.test.options.port %>/test/commons/',
 					'http://' +
 						host +
-						':<%= connect.test.options.port %>/test/integration/rules/',
+						':<%= connect.test.options.port %>/test/integration/rules/?grep=no-autoplay-audio',
 					'http://' +
 						host +
 						':<%= connect.test.options.port %>/test/integration/api/external/'
@@ -43,7 +43,7 @@ exports = module.exports = function(grunt, options) {
 				log: true,
 				urls: mapToUrl(
 					[
-						'test/integration/full/**/*.html',
+						'test/integration/full/async/*.html',
 						'!test/integration/full/**/frames/**/*.html'
 					],
 					'<%= connect.test.options.port %>'
