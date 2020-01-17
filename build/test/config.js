@@ -43,7 +43,7 @@ exports = module.exports = function(grunt, options) {
 				log: true,
 				urls: mapToUrl(
 					[
-						'test/integration/full/async/*.html',
+						'test/integration/full/no-autoplay-audio/*.html',
 						'!test/integration/full/**/frames/**/*.html'
 					],
 					'<%= connect.test.options.port %>'
