@@ -53,6 +53,8 @@ module.exports = function(grunt) {
 						(capabilities.get('mobileEmulationEnabled') ? '-mobile' : '');
 					grunt.log.writeln(url + ' [' + browserName + ']');
 
+					grunt.log.writeln(JSON.stringify(result, undefined, 2));
+
 					// Remember the errors
 					(result.reports || []).forEach(function(err) {
 						grunt.log.error(err.message);
