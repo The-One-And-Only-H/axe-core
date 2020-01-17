@@ -120,9 +120,13 @@
 									 */
 									debug: true,
 									performanceTimer: false,
-									runOnly: { type: 'rule', values: [ruleId] }
+									runOnly: { type: 'rule', values: [ruleId] },
+									preload: true
 								},
 								function(err, r) {
+									console.log(err);
+									console.log(r);
+
 									// assert that there are no errors - if error exists a stack trace is logged.
 									var errStack = err && err.stack ? err.stack : '';
 									assert.isNull(err, 'Error should be null. ' + errStack);
